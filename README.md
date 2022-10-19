@@ -14,5 +14,4 @@ Teniendo en cuenta lo anterior, se desea desarrollar una herramienta para gestio
 Scrum
 
 ## Cliente
-Gilberto Guillermo Alonso Gonzáles
-
+Gilberto Benítez Gautier
