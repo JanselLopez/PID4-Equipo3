@@ -6,9 +6,9 @@ Teniendo en cuenta lo anterior, se desea desarrollar una herramienta para gestio
 **Descripción general:** Para determinar las principales funcionalidades que debe tener la herramienta, debe contactar al cliente y en paralelo, realizar un estudio de sistemas homólogos, que han sido desarrollados en Cuba y en el mundo. Se sugiere, además, aplicar diferentes técnicas de gestión de la información, de manera que les quede claro cada uno de los elementos desde el punto de vista funcional y tecnológico. Debe trabajar en los diferentes artefactos que forman parte del proceso de desarrollo de esta herramieta.
 
 ## Roles
-| líder de proyecto|Analista |Desarrollador  | Bases de Datos|
-|--|--|--|--|
-|Dariel Gascón Ramírez  | Glennys De La Caridad Cordero Valladares - Jansel Alejandro López Bouza|Jansel Alejandro López Bouza - Elier Pérez Díaz - Dariel Gascón Ramírez |Jansel Alejandro López Bouza - Elier Pérez Díaz - Glennys De La Caridad Cordero Valladares|
+| Product Owner| Scrum Master | Developers  |
+|--|--|--|
+|Dariel Gascón Ramírez  | Jansel Alejandro López Bouza|Elier Pérez Díaz - Glennys De La Caridad Cordero Valladares|
 
 ## Metodología de desarrollo
 Scrum
