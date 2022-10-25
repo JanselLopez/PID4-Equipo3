@@ -1,4 +1,4 @@
-class Task {
+class Task implements Comparable {
   late int id;
   late String name;
   late DateTime endDateTime;
@@ -54,5 +54,12 @@ class Task {
       if (idBoss != null) prior += 10;
     }
     return prior;
+  }
+
+  @override
+  int compareTo(other) {
+    if (priority < (other as Task).priority) return -1;
+    if (priority > other.priority) return 1;
+    return 0;
   }
 }

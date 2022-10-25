@@ -71,7 +71,7 @@ class TaskPriorityQueue {
 
   void heapfi(int pos) {
     int father = parent(pos);
-    if (pos != 0 && _array[pos].priority > _array[father].priority) {
+    if (pos != 0 && _array[pos].compareTo(_array[father]) == 1) {
       Task aux = _array[father];
       _array[father] = _array[pos];
       _array[pos] = aux;
@@ -84,11 +84,11 @@ class TaskPriorityQueue {
     if (leftChild(pos) < _array.length) left = leftChild(pos);
     if (rightChild(pos) < _array.length) right = rightChild(pos);
 
-    int max = _array[left ?? 0].priority < _array[right ?? 0].priority
+    int max = _array[left ?? 0].compareTo(_array[right ?? 0]) == -1
         ? left ?? 0
         : right ?? 0;
 
-    if (_array[max].priority > _array[pos].priority) {
+    if (_array[max].compareTo(_array[pos]) == 1) {
       Task aux = _array[max];
       _array[max] = _array[pos];
       _array[pos] = aux;
@@ -120,10 +120,8 @@ class TaskPriorityQueue {
     var pivot = tasks[center];
 
     do {
-      while (tasks[i].endDateTime.difference(DateTime.now()).inDays <
-          pivot.endDateTime.difference(DateTime.now()).inDays) i++;
-      while (tasks[j].endDateTime.difference(DateTime.now()).inDays >
-          pivot.endDateTime.difference(DateTime.now()).inDays) j--;
+      while (tasks[i].endDateTime.compareTo(pivot.endDateTime) == -1) i++;
+      while (tasks[j].endDateTime.compareTo(pivot.endDateTime) == 1) j--;
       if (i <= j) {
         Task temp = tasks[i];
         tasks[i] = tasks[j];
@@ -143,5 +141,34 @@ class TaskPriorityQueue {
       info += task.toString() + "\n";
     }
     return info;
+  }
+
+  List<Task> getTaskByDate(List<Task> tasks, DateTime endDateTime) {
+    int index = _binarySearch(tasks, 0, tasks.length - 1, endDateTime);
+    List<Task> aux = [];
+    if (index != -1) {
+      aux.add(tasks[index]);
+      for (int i = index - 1;
+          i >= 0 && tasks[i].endDateTime.compareTo(endDateTime) == 0;
+          i--) {
+        aux.add(tasks[i]);
+      }
+      for (int i = index + 1;
+          i < tasks.length && tasks[i].endDateTime.compareTo(endDateTime) == 0;
+          i++) {
+        aux.add(tasks[i]);
+      }
+    }
+    return aux;
+  }
+
+  int _binarySearch(List<Task> tasks, int l, int r, DateTime endDateTime) {
+    int middle = (l + r) ~/ 2;
+    if (r < l) return -1;
+    if (tasks[middle].endDateTime.compareTo(endDateTime) == -1)
+      return _binarySearch(tasks, middle + 1, r, endDateTime);
+    if (tasks[middle].endDateTime.compareTo(endDateTime) == 1)
+      return _binarySearch(tasks, l, middle - 1, endDateTime);
+    return middle;
   }
 }
