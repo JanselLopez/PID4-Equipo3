@@ -84,7 +84,7 @@ class TaskPriorityQueue {
     if (leftChild(pos) < _array.length) left = leftChild(pos);
     if (rightChild(pos) < _array.length) right = rightChild(pos);
 
-    int max = _array[left ?? 0].compareTo(_array[right ?? 0]) == -1
+    int max = _array[left ?? 0].compareTo(_array[right ?? 0]) == 1
         ? left ?? 0
         : right ?? 0;
 
